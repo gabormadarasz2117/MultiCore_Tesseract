@@ -1,8 +1,7 @@
-# Tesseract OCR N (X4) szálon
-Az input mappában található összes .pdf fájlon OCR-t hajt végre a Tesseract 5.0 verziójával. Egyszerre N fájlt dolgoz fel (N*4 szálon).
+# Tesseract 5.0 OCR on N (X4) threads
+Performs OCR on all .pdf files found in the input folder using Tesseract version 5.0. It processes N files simultaneously (on N*4 threads).
 
-
-Figyelem: A memóriahasználat magas lehet, ha sok szálon fut. Érdemes úgy számolni, hogy -p 10 = 100GB RAM!
+Note: Memory usage can be high when running multiple threads. It is advisable to consider that -p 10 = 100GB RAM!
 
 ## Install
 
@@ -13,17 +12,17 @@ bash ./build_docker.sh
 ```
 
 ## Run program on a folder
-Opciók: 
+Options:
 
--i <PATH> : Az input mappa elérési útvonala (Az OCR-ezendő .pdf fájlokat tartalmazó mappa)
+-i <PATH>: Path to the input folder (the folder containing PDF files to be OCR'd).
 
--o <PATH> : Az output mappa elérési útvonala (Ha nincs megadva, akkor a  .txt fájlokat az input mappába menti.)
+-o <PATH>: Path to the output folder (if not specified, .txt files will be saved in the input folder).
 
--p <int>  : A processek száma. Default = 2 (Note: A Tesseract 4 szálat használ processenként, ezért legfeljebb a processzorok 24%-a)
+-p <int>: Number of processes. Default = 2 (Note: Tesseract uses 4 threads per process, so up to 24% of the processors can be used).
 
--l <string> : Az OCR-ezni kívánt dokumentumok nyelve. Default = "hun" (Note: Csak a magyar és angol nyelvi szótár van feltelepítve.)
+-l <string>: Language of the documents to be OCR'd. Default = "hun" (Note: Only Hungarian and English language dictionaries are installed).
 
--d <bool> : A modell megbízhatósága a karakterfelismeréssel kapcsolatban. Default = False
+-d <bool>: Model reliability regarding character recognition. Default = False.
 
 ```bash
 python3 run_docker2.py -i /home/pdf -o /home/txt -p 10 -l hun -d True
