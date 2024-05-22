@@ -74,7 +74,7 @@ if __name__ == "__main__":
     parser.add_option("-o", "--output-folder", dest="output_folder", default=None, action="store", type="string",
                       help="output folder PATH",
                       metavar="FILE")
-    parser.add_option("-d", "--data-output", dest="data_output", default=False, action="store_true",
+    parser.add_option("-d", "--data-output", dest="data_output", default=False, action="store",
                       help="Enable OCR statistics output",
                       metavar="BOOLEAN")
     
